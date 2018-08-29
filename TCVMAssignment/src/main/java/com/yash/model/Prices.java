@@ -1,5 +1,5 @@
 package com.yash.model;
 
-public class BlackCofee {
+public enum Prices {
 
 }
