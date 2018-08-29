@@ -14,19 +14,11 @@ public class BeverageDao {
 
 	private static Map<Beverages, Beverage> availableBeverages = new HashMap<Beverages, Beverage>();
 	
-	private static BeverageDao beverageDao;
+	//private  BeverageDao beverageDao;
 
-	private BeverageDao() {
-		try {
-			initialize();
-			new ContainerDao();
-		} catch (ContainerOverflowException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	
 
-	private void initialize() throws ContainerOverflowException {
+	public void initialize() throws ContainerOverflowException {
 
 		Beverage tea = new Beverage();
 		tea.setName(Beverages.TEA);
@@ -49,11 +41,11 @@ public class BeverageDao {
 
 	}
 	
-	public static BeverageDao getInstance(){
+/*	public static BeverageDao getInstance(){
 		 if(beverageDao == null)
 			 beverageDao = new BeverageDao();
 		 return beverageDao;
 		
-	}
+	}*/
 
 }

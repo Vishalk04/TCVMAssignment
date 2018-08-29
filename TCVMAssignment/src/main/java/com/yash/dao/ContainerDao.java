@@ -5,14 +5,8 @@ import com.yash.model.Container;
 import com.yash.model.Materials;
 
 public class ContainerDao {
-
-	ContainerDao() {
-
-		initialize();
-
-	}
-
-	private void initialize() {
+	
+	public  void initialize() {
 
 		try {
 			Container.put(Materials.TEA, 100);
@@ -24,5 +18,24 @@ public class ContainerDao {
 		}
 
 	}
+	
+	public  Integer put(Materials materialName, int quantity) throws ContainerOverflowException {
+		return Container.put(materialName, quantity);
+		
+	}
+	
+	public Integer get(Materials materialName) {
+		return Container.get(materialName);
+	}
+	
+	public void clean() {
+		Container.clean();
+	}
+	
+	
+	public int getSize(Materials materialName){
+		return Container.getSize(materialName);
+	}
+	
 
 }
