@@ -20,18 +20,18 @@ public class BeverageServicesImpl implements IBeverageServices {
 	
 	@Override
 	public boolean checkBeverageAvailability(Beverages beverageName, int quantity) throws MaterialOutOfStockException, ContainerOverflowException {
-		
+		 
 
 		Beverage selectedBeverage =  beverageDao.getBeverage(beverageName);
 		
 		List<Material> material = selectedBeverage.getMaterial();
 		
 	
-		for (Material materials : material) {
+		for (Material materials : material) {  
  
 			int requiredQuantity = (materials.getConsumptionOfMaterial()+materials.getWasteOfMaterial())*quantity ;
 
-			if(containerDao.getSize(materials.getMaterialName()) <= requiredQuantity ){
+			if(containerDao.getSize(materials.getMaterialName()) < requiredQuantity ){
 				
 				throw new MaterialOutOfStockException(material.toString()+" is Out Of Stock");
 			}
@@ -43,13 +43,14 @@ public class BeverageServicesImpl implements IBeverageServices {
 	}
 
 	@Override
-	public void despenseBeverage(Beverages beverageName, int quantity) throws ContainerOverflowException, MaterialOutOfStockException {
+	public boolean despenseBeverage(Beverages beverageName, int quantity) throws ContainerOverflowException, MaterialOutOfStockException {
 
 		Beverage selectedBeverage =  beverageDao.getBeverage(beverageName);
 			
 		
 		containerServicesImpl.despenseMaterial(selectedBeverage,quantity);
 	
+		return true;
 	}
 
 }

@@ -6,5 +6,8 @@ public interface IReport {
 
 	public boolean getSalesReportByBeverages(); 
 
-
+	public Integer checkContainerStatus(String container);
+	
+	public boolean getContainerRefillReport();
+	
 }

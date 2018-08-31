@@ -1,21 +1,25 @@
 package com.yash.services;
 
-import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.yash.dao.ContainerDao;
 import com.yash.dao.OrderDao;
-import com.yash.model.Beverage;
 import com.yash.model.Beverages;
+import com.yash.model.Materials;
 import com.yash.model.Order;
 
 public class ReportServicesImpl implements IReportServices {
 
 	OrderDao orderDao = new OrderDao();
+	
+	ContainerDao containerDao = new ContainerDao();
 
 	@Override
-	public boolean generateTotalSaleReport() {
+	public boolean generateTotalSaleReport() { 
 		Integer totalCups = 0;
 
 		Double totalAmount = new Double(0);
@@ -53,6 +57,16 @@ public class ReportServicesImpl implements IReportServices {
 
 		return true;
 
+	}
+
+	@Override
+	public boolean getContainerRefillReport() {
+			
+	System.out.println("------------------------Refill Containers Report ----------------------------");
+	System.out.println(containerDao.getAllRefillTransaction());
+	
+	return true;
+	
 	}
 
 }

@@ -33,7 +33,7 @@ public class ContainerServicesImpl implements IContainerServices {
 	}
 
 	@Override
-	public void despenseMaterial(Beverage beverage, int quantity)
+	public boolean despenseMaterial(Beverage beverage, int quantity)
 			throws ContainerOverflowException, MaterialOutOfStockException {
 
 		int totalRequiredQuantity;
@@ -48,6 +48,7 @@ public class ContainerServicesImpl implements IContainerServices {
 			currentSize = currentSize - totalRequiredQuantity;
 			containerDao.put(materials.getMaterialName(), currentSize);
 		}
+		return true;
 
 	}
 
@@ -61,6 +62,8 @@ public class ContainerServicesImpl implements IContainerServices {
 			throw new ContainerOverflowException("entered quantity exceeds the container capacity");
 		
 		containerDao.put(material, currentAvailableMaterial);
+		
+		addrefillContainerTransaction(material , quantity);
 		
 		return currentAvailableMaterial; 
 		
@@ -82,5 +85,12 @@ public class ContainerServicesImpl implements IContainerServices {
 		return containerDao.getSize(container);
 		
 	}
+	
+	@Override
+	public boolean addrefillContainerTransaction(Materials material, Integer quantity){
+		return containerDao.addRefillTransaction(material, quantity);
+	}
+
+
 
 }

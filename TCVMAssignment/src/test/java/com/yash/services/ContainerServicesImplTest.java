@@ -43,7 +43,6 @@ public class ContainerServicesImplTest {
 	@After
 	public void tearDown() {
 
-		containers.clean();
 		beverageDao = null;
 	}
 
@@ -155,7 +154,7 @@ public class ContainerServicesImplTest {
 		Mockito.verify(containerDao).get(Materials.TEA);
 
 	}
-
+ 
 	@Test
 	public void testResetContainers() throws ContainerOverflowException {
 
@@ -183,6 +182,15 @@ public class ContainerServicesImplTest {
 		assertEquals( new Integer(100), containerServicesImpl.checkContainerStatus(Materials.TEA));
 		
 		Mockito.verify(containerDao).getSize(Materials.TEA); 
+	} 
+	
+	@Test
+	public void shouldAddRefillContainerTransaction(){
+		
+		when(containerDao.addRefillTransaction(Materials.TEA, 50)).thenReturn(true);
+		containerDao.addRefillTransaction(Materials.TEA, 50);
+		Mockito.verify(containerDao).addRefillTransaction(Materials.TEA, 50);
+		
 	}
 
 }

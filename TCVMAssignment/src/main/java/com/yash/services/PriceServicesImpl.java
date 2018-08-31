@@ -13,7 +13,7 @@ public class PriceServicesImpl implements IPriceServices {
 		
 		Beverage beverage = bevereagesDao.getBeverage(beverages);
 		
-		if(beverage.getPrice()!=null)
+		if(beverage.getPrice()!=null) 
 			return beverage.getPrice() * quantity;
 		
 		throw new RuntimeException("Price Not Available For selected beverage");

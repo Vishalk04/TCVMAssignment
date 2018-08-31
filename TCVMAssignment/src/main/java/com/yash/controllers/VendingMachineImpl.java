@@ -20,11 +20,11 @@ public class VendingMachineImpl implements IVendingMachine {
 	IBeverageServices beveregeServices;
 
 	IPriceServices priceServices;
-	 
+
 	IContainerServices containerServices;
-	
+
 	Order order;
-	
+
 	OrderServicesImpl orderServices;
 
 	public VendingMachineImpl() throws ContainerOverflowException {
@@ -32,61 +32,63 @@ public class VendingMachineImpl implements IVendingMachine {
 		beveregeServices = new BeverageServicesImpl();
 		priceServices = new PriceServicesImpl();
 		containerServices = new ContainerServicesImpl();
-		orderServices = new OrderServicesImpl();  
+		orderServices = new OrderServicesImpl();
+	
 	}
 
 	@Override
 	public Double checkBeverageAvailabilityAndCalculateTotalPrice(String beverage, int quantity)
 			throws MaterialOutOfStockException, ContainerOverflowException {
+
 		
-		order = new Order();
-		
+
 		beveregeServices.checkBeverageAvailability(Beverages.valueOf(beverage), quantity);
-		order.setBeverages(Beverages.valueOf(beverage));
-		order.setQuantity(quantity);		
+	
 
 		Double totalPrice = priceServices.calculateTotalPrice(Beverages.valueOf(beverage), quantity);
-				
-		order.setTotalPrice(totalPrice);
 
 		
-		
+
 		return totalPrice;
-		
-	} 
+
+	}
 
 	@Override
 	public Double placeBeverageOrderAndReturnChange(String beverage, int quantity, Double amount)
-			throws MaterialOutOfStockException, ContainerOverflowException {
-				
+			throws MaterialOutOfStockException, ContainerOverflowException { 
+
 		beveregeServices.despenseBeverage(Beverages.valueOf(beverage), quantity);
-		Double totalPrice = order.getTotalPrice();
+		order = new Order();
+		
+		Double totalPrice = order.getTotalPrice(); 
+		
+		order.setBeverages(Beverages.valueOf(beverage));
+		order.setQuantity(quantity);
+		order.setTotalPrice(totalPrice);
+		
 		orderServices.saveOrder(order);
-		return	 priceServices.calculateChange(amount, totalPrice);			
+		return priceServices.calculateChange(amount, totalPrice);
 	}
-	
+
 	@Override
 	public Integer refillContainer(String container, int quantity) throws ContainerOverflowException {
 
 		return containerServices.refillContainer(Materials.valueOf(container.toUpperCase()), quantity);
-		
+
 	}
 
 	@Override
 	public void resetContainer() throws ContainerOverflowException {
-	
-	containerServices.resetContainers();
-		
+
+		containerServices.resetContainers();
+
 	}
 
-
-	@Override
-	public Integer checkContainerStatus(String container) {
-		
-		return containerServices.checkContainerStatus(Materials.valueOf(container.toUpperCase()));
-		
+	public void destroy() {
+		beveregeServices = null;
+		priceServices = null;
+		containerServices = null;
+		orderServices = null;
 	}
-
-
 
 }

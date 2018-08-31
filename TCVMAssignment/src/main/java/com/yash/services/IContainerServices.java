@@ -9,12 +9,15 @@ public interface IContainerServices{
 
 	public Integer addMaterial(Materials MaterialsName, int quantity) throws ContainerOverflowException;
 	
-	public void despenseMaterial(Beverage beverage, int quantity) throws ContainerOverflowException, MaterialOutOfStockException;
+	public boolean despenseMaterial(Beverage beverage, int quantity) throws ContainerOverflowException, MaterialOutOfStockException;
 
 	public Integer refillContainer(Materials material, int quantity) throws ContainerOverflowException;
 	
 	public void resetContainers() throws ContainerOverflowException;
 	
 	public Integer checkContainerStatus(Materials container);
+
+	public boolean addrefillContainerTransaction(Materials material, Integer quantity);
+
 	
 }

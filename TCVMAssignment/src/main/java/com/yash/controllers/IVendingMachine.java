@@ -17,7 +17,8 @@ public interface IVendingMachine{
 	
 	public void resetContainer() throws ContainerOverflowException;
 	
-	public Integer checkContainerStatus(String container);
+	public void destroy();
+
 
 	
 	
