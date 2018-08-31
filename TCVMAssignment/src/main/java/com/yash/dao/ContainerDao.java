@@ -9,9 +9,9 @@ public class ContainerDao {
 	public  void initialize() {
 
 		try {
-			Container.put(Materials.TEA, 100);
-			Container.put(Materials.MILK, 100);
-			Container.put(Materials.SUGER, 100);
+			Container.put(Materials.TEA, 80);
+			Container.put(Materials.MILK, 80);
+			Container.put(Materials.SUGER, 80);
 		} catch (ContainerOverflowException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

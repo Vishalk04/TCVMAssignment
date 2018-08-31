@@ -13,19 +13,18 @@ import com.yash.model.Materials;
 public class BeverageDao {
 
 	private static Map<Beverages, Beverage> availableBeverages = new HashMap<Beverages, Beverage>();
-	
-	//private  BeverageDao beverageDao;
-
-	
 
 	public void initialize() throws ContainerOverflowException {
 
-		Beverage tea = new Beverage();
+		Beverage tea = new Beverage(); 
 		tea.setName(Beverages.TEA);
+		tea.setPrice(10.00);
 		tea.setMaterial(Arrays.asList(new Material(Materials.TEA, 10, 10),
-
+				
 				new Material(Materials.MILK, 10, 10), new Material(Materials.SUGER, 10, 10)));
+		
 		Beverage coffee = new Beverage();
+		//coffee.setPrice(10.00);
 		coffee.setName(Beverages.COFFEE);
 		coffee.setMaterial(Arrays.asList(new Material(Materials.COFFEE, 10, 10), new Material(Materials.MILK, 10, 10),
 				new Material(Materials.SUGER, 10, 10)));
@@ -40,12 +39,5 @@ public class BeverageDao {
 		return availableBeverages.get(beverages);
 
 	}
-	
-/*	public static BeverageDao getInstance(){
-		 if(beverageDao == null)
-			 beverageDao = new BeverageDao();
-		 return beverageDao;
-		
-	}*/
 
 }

@@ -1,19 +1,21 @@
 package com.yash.model;
 
+
 public class Order {
 
-	String orderId;
+	Integer orderId;
 	String beverageId;
 	Beverages beverages;
-	int quantity;
-	double amount;
+	Integer quantity;
+	Double totalPrice;
 	
 	
-	public String getOrderId() {
-		return orderId;
+	 
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
+	public Double getTotalPrice() {
+		return totalPrice;
 	}
 	public String getBeverageId() {
 		return beverageId;
@@ -27,18 +29,21 @@ public class Order {
 	public void setBeverages(Beverages beverages) {
 		this.beverages = beverages;
 	}
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	public double getAmount() {
-		return amount;
+
+	public Integer getOrderId() {
+		return orderId;
 	}
-	public void setAmount(double amount) {
-		this.amount = amount;
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
 	}
+
+	
 	
 	
 

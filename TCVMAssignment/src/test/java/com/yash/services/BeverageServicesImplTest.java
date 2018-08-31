@@ -2,7 +2,6 @@ package com.yash.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.yash.dao.BeverageDao;
@@ -28,8 +26,9 @@ import com.yash.model.Materials;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BeverageServicesImplTest {
+	
 	@InjectMocks
-	IBeverageServices beverageServices ;
+	BeverageServicesImpl beverageServices ;
 	
 	@Mock
 	ContainerServicesImpl containerServicesImpl;
@@ -39,14 +38,13 @@ public class BeverageServicesImplTest {
 
 	@Before
 	public void setup() throws ContainerOverflowException {
-		
-		//beverageServices = new BeverageServicesImpl();
+
 		 containerDao = new ContainerDao();
 		 containerDao.initialize();
 		 beverageDao = new BeverageDao();
 		 beverageDao.initialize();
-		 
 	}
+	
 	@After
 	public void tearDown(){
 		beverageServices = null;
@@ -71,22 +69,24 @@ public class BeverageServicesImplTest {
 		beverageServices.checkBeverageAvailability(Beverages.TEA, 1);
 	}
 	
+
 	@Test
-	public void testDespenseBeverage() {
-		//Beverage selectedBeverage =  beverageDao.getBeverage(Beverages.TEA);
+	public void testDespenseBeverage() throws ContainerOverflowException, MaterialOutOfStockException {
+		Beverage selectedBeverage =  beverageDao.getBeverage(Beverages.TEA);
 		
 		List<Material> material = new ArrayList<Material>();
 		material.add(new Material(Materials.TEA, 10, 10));
 		//Mockito.when(containerServicesImpl.updateMaterial(material, 1)
-		doNothing().when(containerServicesImpl.updateMaterial(Mockito.any(Beverage.class),1));
+		//doNothing().when(containerServicesImpl.updateMaterial(selectedBeverage,1));
 		 
 		beverageServices.despenseBeverage(Beverages.TEA, 1);
 		
-	}
+	} 
 	
+
 	@Ignore
 	@Test
-	public void  shouldAdjustAllMaterialWhenDespenceBeverage() throws ContainerOverflowException{
+	public void  shouldAdjustAllMaterialWhenDespenceBeverage() throws ContainerOverflowException, MaterialOutOfStockException{
 		
 		beverageServices.despenseBeverage(Beverages.TEA, 1);
 		assertEquals(80, containerDao.getSize(Materials.TEA ));

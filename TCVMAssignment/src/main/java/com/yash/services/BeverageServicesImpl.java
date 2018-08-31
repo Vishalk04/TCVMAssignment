@@ -11,7 +11,7 @@ import com.yash.model.Beverages;
 import com.yash.model.Container;
 import com.yash.model.Material;
 
-public class BeverageServicesImpl implements IBeverageServices {
+public class BeverageServicesImpl implements IBeverageServices { 
 	
 	ContainerServicesImpl  containerServicesImpl = new ContainerServicesImpl();
 
@@ -37,17 +37,18 @@ public class BeverageServicesImpl implements IBeverageServices {
 			}
 			
 		}
+		
 		return true;
 		
 	}
 
 	@Override
-	public void despenseBeverage(Beverages beverageName, int quantity) throws ContainerOverflowException {
+	public void despenseBeverage(Beverages beverageName, int quantity) throws ContainerOverflowException, MaterialOutOfStockException {
 
 		Beverage selectedBeverage =  beverageDao.getBeverage(beverageName);
 			
 		
-		containerServicesImpl.updateMaterial(selectedBeverage,quantity);
+		containerServicesImpl.despenseMaterial(selectedBeverage,quantity);
 	
 	}
 

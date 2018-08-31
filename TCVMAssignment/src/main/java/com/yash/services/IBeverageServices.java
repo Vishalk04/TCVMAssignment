@@ -9,6 +9,6 @@ public interface IBeverageServices {
 	
 	public boolean checkBeverageAvailability(Beverages beverage, int quantity) throws MaterialOutOfStockException, ContainerOverflowException;
 	
-	public void despenseBeverage(Beverages beverage, int quantity) throws ContainerOverflowException;
+	public void despenseBeverage(Beverages beverage, int quantity) throws ContainerOverflowException, MaterialOutOfStockException;
 
 }

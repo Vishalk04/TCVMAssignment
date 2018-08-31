@@ -7,19 +7,20 @@ import com.yash.exceptions.MaterialOutOfStockException;
 import com.yash.model.Materials;
 import com.yash.model.Order;
 
-public interface IVendingMachine {
+public interface IVendingMachine{
 	
 	public Double checkBeverageAvailabilityAndCalculateTotalPrice(String drink, int quantity) throws MaterialOutOfStockException, ContainerOverflowException;
 
-	public boolean placeBeverageOrderAndReturnChange(String beverage, int quantity, Double amount) throws MaterialOutOfStockException, ContainerOverflowException;
+	public Double placeBeverageOrderAndReturnChange(String beverage, int quantity, Double amount) throws MaterialOutOfStockException, ContainerOverflowException;
 
-	public boolean refillContainer(String container);
+	public Integer refillContainer(String container, int quantity) throws ContainerOverflowException;
 	
-	public boolean resetContainer(String container);
+	public void resetContainer() throws ContainerOverflowException;
 	
-	public List<Order> generateTotalSaleReport();
+	public Integer checkContainerStatus(String container);
+
 	
-	public int checkContainerStatus(String container);
+	
 	
 	//public Double calculateTotalPrice(String drink, int quantity);
 	//public Double makePaymentAndChange(Double amount, Double Price);

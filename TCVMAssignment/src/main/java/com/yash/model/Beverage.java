@@ -6,6 +6,15 @@ public class Beverage {
 
 	Beverages name;
 	String beverageId;
+	Double price;
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
 	private List<Material> material;
 	
 	public Beverages getName() {
@@ -16,10 +25,6 @@ public class Beverage {
 		this.name = name;
 	}
 
-
-	
-
-
 	public List<Material> getMaterial() {
 		return material;
 	}
@@ -27,6 +32,5 @@ public class Beverage {
 	public void setMaterial(List<Material> list) {
 		this.material = list;
 	}
-
 
 }
