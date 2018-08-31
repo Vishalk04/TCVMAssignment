@@ -42,6 +42,7 @@ public void testprepareBeverage() throws MaterialOutOfStockException, ContainerO
 
 @Mock
 InputScanner scan;
+
 @Test
 public void testReports() {
 	
@@ -56,7 +57,36 @@ public void testReports() {
 	
 }
 
+@Test
+public void testSetUpContainer() throws ContainerOverflowException{
+	
+	Mockito.when(scan.getString()).thenReturn("1").thenReturn("TEA");
+	Mockito.when(scan.nextInt()).thenReturn(10); 
+	Mockito.when(vendingMachine.refillContainer("TEA", 1)).thenReturn(90);
+	app.setUpContainer();
+}
 
+@Test
+public void testStartSwitchCase1(){
+	
+	Mockito.when(scan.getString()).thenReturn("4");//.thenReturn("5").thenReturn("4");
+	//Mockito.doNothing().when(app).customerMenu();
+	 app.start();
+}
+
+@Test
+public void testStartSwitchCase5(){
+	
+	Mockito.when(scan.getString()).thenReturn("5");//.thenReturn("5").thenReturn("4");
+	//Mockito.doNothing().when(app).customerMenu();
+	 app.start();
+}
+
+@Test
+public void testCustomerMenuSwitchCase1(){
+	Mockito.when(scan.getString()).thenReturn("6");
+	app.customerMenu();
+}
 
 
 

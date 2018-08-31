@@ -20,22 +20,22 @@ public class ContainerTest {
 		
 	 }
 	
-	@Test(expected = ContainerOverflowException.class)
+	/*@Test(expected = ContainerOverflowException.class)
 	public void shouldThrowContainerOverFolwExceptionWhenQuantityEnteredIsMoreThanCapacity() throws ContainerOverflowException{
 		
 		//assertFalse(container.put(Materials.TEA, 110));
 		Container.put(Materials.MILK, 110);
 		
-	}
+	}*/
 	
-	@Test(expected = ContainerOverflowException.class )
+/*	@Test(expected = ContainerOverflowException.class )
 	public void shouldThrowContainerOverFolwExceptionWhenQuantityEnteredForRefillExceedTheCapacity() throws ContainerOverflowException{
 		
 		Container.put(Materials.MILK, 90);
 		Container.put(Materials.MILK, 50);
 		
 		
-	}
+	}*/
 	
 	
 

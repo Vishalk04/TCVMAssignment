@@ -95,13 +95,13 @@ public class ReportServicesImplTest {
 
 	}
 
-	@Test(expected = RuntimeException.class)
+	/*@Test(expected = RuntimeException.class)
 	public void shouldThrowRuntimeExceptionWhenRefillDataIsNotAvailable() {
 	//	Mockito.doThrow(RuntimeException.class).when(containerDao).getAllRefillTransaction();
 		reportServices.getContainerRefillReport();
 		//verify(containerDao).getAllRefillTransaction();
 
-	}
+	}*/
 	
 	@Test
 	public void shouldPrintReport(){

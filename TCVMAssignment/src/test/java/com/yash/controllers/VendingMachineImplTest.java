@@ -58,7 +58,7 @@ public class VendingMachineImplTest {
 
 		Mockito.verify(priceServicesImpl).calculateTotalPrice(Beverages.TEA, 1);
 
-	}
+	} 
 
 	@Test(expected = MaterialOutOfStockException.class)
 	public void shouldThrowExceptionWhenMaterialIsNotAvailable()
@@ -98,7 +98,7 @@ public class VendingMachineImplTest {
 
 		assertEquals(new Double(10.00),	actualValue); 
 
-/*
+/* 
 		Mockito.verify(beverageServicesImpl).despenseBeverage(Beverages.TEA, 1);
 
 		Mockito.verify(priceServicesImpl).calculateChange(new Double(20.00), new Double(10.00));
@@ -114,4 +114,20 @@ public class VendingMachineImplTest {
 		containerServicesImpl.refillContainer(Materials.valueOf(container.toUpperCase()), quantity)
 	}
 	 */
+	
+	
+	
+	@Test
+	public void testrefillContainer() throws ContainerOverflowException{
+		when(containerServciesImpl.refillContainer(Materials.TEA, 10)).thenReturn(1);
+		vendingMachineImpl.refillContainer("TEA", 10);
+		verify(containerServciesImpl).refillContainer(Materials.TEA, 10);
+	}
+	
+	@Test
+	public void testresetContainer() throws ContainerOverflowException{
+		
+		vendingMachineImpl.resetContainer();
+		
+	}
 }

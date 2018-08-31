@@ -89,7 +89,7 @@ public class BeverageServicesImplTest {
 		verify(containerDao).getSize(Materials.MILK);
 		verify(containerDao).getSize(Materials.SUGER);
 
-	}
+	} 
 
 	@Test(expected = MaterialOutOfStockException.class)
 	public void shuldThrowExceptionIfMaterialIsOutOfStock()

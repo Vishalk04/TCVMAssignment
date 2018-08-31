@@ -18,12 +18,5 @@ public interface IVendingMachine{
 	public void resetContainer() throws ContainerOverflowException;
 	
 	public void destroy();
-
-
-	
-	
-	
-	//public Double calculateTotalPrice(String drink, int quantity);
-	//public Double makePaymentAndChange(Double amount, Double Price);
 	
 }

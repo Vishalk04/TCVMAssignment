@@ -58,7 +58,7 @@ public class VendingMachineImpl implements IVendingMachine {
 			throws MaterialOutOfStockException, ContainerOverflowException { 
 
 		beveregeServices.despenseBeverage(Beverages.valueOf(beverage), quantity);
-		order = new Order();
+		order = new Order(); 
 		
 		Double totalPrice = order.getTotalPrice(); 
 		

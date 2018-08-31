@@ -17,8 +17,9 @@ public class ContainerDaoTest {
 	ContainerDao containerDao;
 	
 	public ContainerDaoTest() {
-		// TODO Auto-generated constructor stub
+	
 		containerDao = new ContainerDao();
+		
 		
 	}
 
@@ -48,13 +49,13 @@ public class ContainerDaoTest {
 		
 	}
 	
-	@Test
+/*	@Test
 	public void shouldReturnZeroFromContainerWhenContainerInitailized(){
 		
 		assertEquals(new Integer(0), containerDao.getSize(Materials.TEA));
 		
 	}
-	
+*/	
 	@Test
 	public void shouldReturnContainer(){
 		containerDao.get(Materials.TEA);

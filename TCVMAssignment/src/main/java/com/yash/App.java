@@ -41,7 +41,7 @@ public class App {
 
 	public void start() {
 
-		try {
+		
 			System.out.println("-------------------------Welcome-------------------------------");
 
 			System.out.println("1 - menu");
@@ -68,16 +68,14 @@ public class App {
 
 			case "4":
 				//tearDown();
-				System.exit(0);
+				System.out.println("exited");
 				break;
 			default:
+				System.out.println("enter valid option");
 				break;
 
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-
-		}
+		
 
 	}
 
@@ -89,7 +87,7 @@ public class App {
 	}
 
 	public void reports() {
-		try {
+
 
 	
 				System.out.println("-------------------------Welcome-------------------------------");
@@ -141,16 +139,15 @@ public class App {
 					break;
 				}
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+		
 
-		}
+		
 
 	}
 
 	public  void setUpContainer() {
 		try {
-			while (true) {
+			
 
 				System.out.println("Please Select your option...");
 
@@ -196,7 +193,7 @@ public class App {
 					start();
 					break;
 				}
-			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -204,8 +201,7 @@ public class App {
 	}
 
 	public void customerMenu() {
-		try {
-			while (true) {
+		
 				System.out.println("Please Select your Beverage...");
 				System.out.println("1 - Tea");
 				System.out.println("2 - Black Tea");
@@ -241,10 +237,9 @@ public class App {
 					break;
 
 				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			
+			
+		
 
 	}
 
