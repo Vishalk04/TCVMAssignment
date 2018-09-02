@@ -12,8 +12,6 @@ public class Material {
 	Materials materialName;
 	int ConsumptionOfMaterial;
 	int wasteOfMaterial;
-
-
 	
 	public Materials getMaterialName() {
 		return materialName;

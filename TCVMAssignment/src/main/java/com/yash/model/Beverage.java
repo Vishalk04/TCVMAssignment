@@ -7,6 +7,7 @@ public class Beverage {
 	Beverages name;
 	String beverageId;
 	Double price;
+	
 	public Double getPrice() {
 		return price;
 	}

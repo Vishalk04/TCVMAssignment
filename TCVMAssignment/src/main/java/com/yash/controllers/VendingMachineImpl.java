@@ -1,7 +1,5 @@
 package com.yash.controllers;
 
-import java.util.List;
-
 import com.yash.exceptions.ContainerOverflowException;
 import com.yash.exceptions.MaterialOutOfStockException;
 import com.yash.model.Beverages;
@@ -25,10 +23,8 @@ public class VendingMachineImpl implements IVendingMachine {
 
 	private Order order;
 
-
-	
-
 	OrderServicesImpl orderServices;
+	
 
 	public VendingMachineImpl() throws ContainerOverflowException {
 
@@ -57,9 +53,9 @@ public class VendingMachineImpl implements IVendingMachine {
 	}
 
 	@Override
-	public Double placeBeverageOrderAndReturnChange(String beverage, int quantity, Double price, Double amount)
-			throws MaterialOutOfStockException, ContainerOverflowException { 
-
+	public Double placeBeverageOrderAndReturnChange(String beverage, int quantity, Double price, double enteredAmount)
+			throws MaterialOutOfStockException, ContainerOverflowException {
+	
 		beveregeServices.despenseBeverage(Beverages.valueOf(beverage), quantity);
 		
 		order = new Order(); 
@@ -72,7 +68,7 @@ public class VendingMachineImpl implements IVendingMachine {
 		
 		orderServices.saveOrder(order);
 		
-		return priceServices.calculateChange(amount, totalPrice);
+		return priceServices.calculateChange(enteredAmount, totalPrice);
 	}
 
 	@Override
@@ -84,16 +80,10 @@ public class VendingMachineImpl implements IVendingMachine {
 
 	@Override
 	public void resetContainer() throws ContainerOverflowException {
-
-		containerServices.resetContainers();
-
-	}
-
-	@Override
-	public Double placeBeverageOrderAndReturnChange(String beverage, int quantity, Double price, double enteredAmount)
-			throws MaterialOutOfStockException, ContainerOverflowException {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
+
+
 
 }

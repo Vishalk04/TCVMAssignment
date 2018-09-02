@@ -17,7 +17,4 @@ public interface IVendingMachine{
 	
 	public void resetContainer() throws ContainerOverflowException;
 
-	Double placeBeverageOrderAndReturnChange(String beverage, int quantity, Double price, Double amount)
-			throws MaterialOutOfStockException, ContainerOverflowException;
-
 }

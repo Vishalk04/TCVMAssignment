@@ -35,7 +35,7 @@ public class AppTest extends App {
 public void testprepareBeverage() throws MaterialOutOfStockException, ContainerOverflowException{
 	
 	Mockito.when(vendingMachine.checkBeverageAvailabilityAndCalculateTotalPrice("TEA", 1)).thenReturn(10.00);
-	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, 10.00)).thenReturn(0.00);
+	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, 10.00,10.00)).thenReturn(0.00);
 	app.prepareBeverage("TEA");
 }
 
@@ -169,7 +169,7 @@ public void testCustomerMenuSwitchCase1() throws MaterialOutOfStockException, Co
 	
 	Mockito.when(vendingMachine.checkBeverageAvailabilityAndCalculateTotalPrice("TEA",1)).thenReturn(10.00);
 	
-	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, 10.00)).thenReturn(0.00);
+	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, 10.00, 10.00)).thenReturn(0.00);
 	
 	
 	Mockito.when(scan.nextDouble()).thenReturn(5.00).thenReturn(5.00);
@@ -186,7 +186,7 @@ public void testCustomerMenuSwitchCase2() throws MaterialOutOfStockException, Co
 	
 	Mockito.when(vendingMachine.checkBeverageAvailabilityAndCalculateTotalPrice("TEA",1)).thenReturn(10.00);
 	
-	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, 20.00)).thenReturn(10.00);
+	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1,10.00, 20.00)).thenReturn(10.00);
 	
 	Mockito.when(scan.nextDouble()).thenReturn(20.00);
 
@@ -202,7 +202,7 @@ public void testCustomerMenuSwitchCase3() throws MaterialOutOfStockException, Co
 	
 	Mockito.when(vendingMachine.checkBeverageAvailabilityAndCalculateTotalPrice("TEA",1)).thenReturn(10.00);
 	
-	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, 20.00)).thenReturn(10.00);
+	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1,10.00, 20.00)).thenReturn(10.00);
 	
 	Mockito.when(scan.nextDouble()).thenReturn(20.00);
 
@@ -218,11 +218,12 @@ public void testCustomerMenuSwitchCase4() throws MaterialOutOfStockException, Co
 	
 	Mockito.when(vendingMachine.checkBeverageAvailabilityAndCalculateTotalPrice("TEA",1)).thenReturn(10.00);
 	
-	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, 20.00)).thenReturn(10.00);
+	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1,10.00, 20.00)).thenReturn(10.00);
 	
 	Mockito.when(scan.nextDouble()).thenReturn(20.00);
 
 	app.customerMenu();
+	
 }
 
 
@@ -234,7 +235,7 @@ public void testCustomerMenuSwitchCase5() throws MaterialOutOfStockException, Co
 	
 	Mockito.when(vendingMachine.checkBeverageAvailabilityAndCalculateTotalPrice("TEA",1)).thenReturn(10.00);
 	
-	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, 20.00)).thenReturn(10.00);
+	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, 10.00, 20.00)).thenReturn(10.00);
 	
 	Mockito.when(scan.nextDouble()).thenReturn(20.00);
 
