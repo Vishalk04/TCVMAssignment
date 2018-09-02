@@ -17,9 +17,7 @@ public class Order {
 	public Double getTotalPrice() {
 		return totalPrice;
 	}
-	public String getBeverageId() {
-		return beverageId;
-	}
+
 	public void setBeverageId(String beverageId) {
 		this.beverageId = beverageId;
 	}

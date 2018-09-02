@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.yash.exceptions.ContainerOverflowException;
 import com.yash.model.Container;
 import com.yash.model.Materials;
 
@@ -28,10 +29,11 @@ public class ContainerDaoTest {
 		assertTrue(containerDao.addRefillTransaction(Materials.TEA, 10));
 	}
 
-	@Ignore
+
+	
 	@Test
-	public void shouldReturnAllContainerRefillTransaction() {
-		// assertThat(containerDao.getAllRefillTransaction(), hasSize(2));
+	public void testPut() throws ContainerOverflowException {
+		containerDao.put(Materials.TEA, 1);
 	}
 	
 	

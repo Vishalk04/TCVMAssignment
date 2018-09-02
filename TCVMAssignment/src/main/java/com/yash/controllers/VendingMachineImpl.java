@@ -23,7 +23,10 @@ public class VendingMachineImpl implements IVendingMachine {
 
 	IContainerServices containerServices;
 
-	Order order;
+	private Order order;
+
+
+	
 
 	OrderServicesImpl orderServices;
 
@@ -54,10 +57,11 @@ public class VendingMachineImpl implements IVendingMachine {
 	}
 
 	@Override
-	public Double placeBeverageOrderAndReturnChange(String beverage, int quantity, Double amount)
+	public Double placeBeverageOrderAndReturnChange(String beverage, int quantity, Double price, Double amount)
 			throws MaterialOutOfStockException, ContainerOverflowException { 
 
 		beveregeServices.despenseBeverage(Beverages.valueOf(beverage), quantity);
+		
 		order = new Order(); 
 		
 		Double totalPrice = order.getTotalPrice(); 
@@ -67,6 +71,7 @@ public class VendingMachineImpl implements IVendingMachine {
 		order.setTotalPrice(totalPrice);
 		
 		orderServices.saveOrder(order);
+		
 		return priceServices.calculateChange(amount, totalPrice);
 	}
 
@@ -84,11 +89,11 @@ public class VendingMachineImpl implements IVendingMachine {
 
 	}
 
-	public void destroy() {
-		beveregeServices = null;
-		priceServices = null;
-		containerServices = null;
-		orderServices = null;
+	@Override
+	public Double placeBeverageOrderAndReturnChange(String beverage, int quantity, Double price, double enteredAmount)
+			throws MaterialOutOfStockException, ContainerOverflowException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

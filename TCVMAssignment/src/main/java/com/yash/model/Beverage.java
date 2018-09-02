@@ -16,10 +16,7 @@ public class Beverage {
 	}
 
 	private List<Material> material;
-	
-	public Beverages getName() {
-		return name;
-	}
+
 
 	public void setName(Beverages name) {
 		this.name = name;

@@ -13,13 +13,7 @@ public class Material {
 	int ConsumptionOfMaterial;
 	int wasteOfMaterial;
 
-	
-	public String getMaterialId() {
-		return MaterialId;
-	}
-	public void setMaterialId(String materialId) {
-		MaterialId = materialId;
-	}
+
 	
 	public Materials getMaterialName() {
 		return materialName;

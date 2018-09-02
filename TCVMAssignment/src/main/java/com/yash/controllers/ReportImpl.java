@@ -42,10 +42,7 @@ public class ReportImpl implements IReport {
 		return reportServices.getContainerRefillReport();
 	}
 	
-	public void destroy(){
-		reportServices = null;
-		containerServices = null;
-	}
+
 
 	
 

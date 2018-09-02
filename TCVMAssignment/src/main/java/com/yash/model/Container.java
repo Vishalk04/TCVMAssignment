@@ -24,15 +24,6 @@ public class Container {
 
 	}
 
-/*	public static void clean() {
-
-		Set<Materials> keyset = container.keySet();
-
-		for (Materials materials : keyset) {
-			container.put(materials, 0);
-		}
-
-	}*/
 
 	public static Integer get(Materials materialName) {
 		// TODO Auto-generated method stub

@@ -1,7 +1,5 @@
 package com.yash;
 
-import java.util.Scanner;
-
 import com.yash.controllers.IReport;
 import com.yash.controllers.IVendingMachine;
 import com.yash.controllers.ReportImpl;
@@ -11,8 +9,6 @@ import com.yash.exceptions.MaterialOutOfStockException;
 import com.yash.model.InputScanner;
 
 public class App {
-
-	//Scanner scan = new Scanner(System.in);
 	InputScanner scan;
 	IVendingMachine vendingMachine;
 	IReport report;
@@ -79,12 +75,7 @@ public class App {
 
 	}
 
-	private void tearDown() {
-		vendingMachine = null;
-		//scan.close();
-		System.exit(1);
 
-	}
 
 	public void reports() {
 
@@ -145,9 +136,7 @@ public class App {
 
 	}
 
-	public  void setUpContainer() {
-		try {
-			
+	public  void setUpContainer() {		
 
 				System.out.println("Please Select your option...");
 
@@ -176,16 +165,14 @@ public class App {
 
 					break;
 
-				/*
-				 * case "3":
-				 * System.out.println("Please Enter The Container Name: ");
-				 * container = scan.nextLine();
-				 * System.out.println("current status of container is: " +
-				 * vendingMachine.checkContainerStatus(container)); break;
-				 */
 
 				case "2":
-					vendingMachine.resetContainer();
+					try {
+						vendingMachine.resetContainer();
+					} catch (ContainerOverflowException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					System.out.println("current status of container is: ");
 					break;
 
@@ -193,10 +180,7 @@ public class App {
 					start();
 					break;
 				}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	
 
 	}
 
@@ -252,13 +236,14 @@ public class App {
 			double enteredAmount = 0;
 			
 			while(enteredAmount < price){
+				
 			System.out.println("Please Enter the Amount Rs: " + (price-enteredAmount));
 			
 			enteredAmount = enteredAmount + scan.nextDouble();
 			
 			}
 			
-			Double change = vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, enteredAmount);
+			Double change = vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, price , enteredAmount);
 			if (change > 0.0) {
 				System.out.println("Please take Your Change Rs: " + change);
 				System.out.println(".....");
