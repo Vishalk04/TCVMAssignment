@@ -5,7 +5,7 @@ public class Order {
 
 	Integer orderId;
 	String beverageId;
-	Beverages beverages;
+	BeverageTypes beverages;
 	Integer quantity;
 	Double totalPrice;
 	
@@ -21,10 +21,10 @@ public class Order {
 	public void setBeverageId(String beverageId) {
 		this.beverageId = beverageId;
 	}
-	public Beverages getBeverages() {
+	public BeverageTypes getBeverages() {
 		return beverages;
 	}
-	public void setBeverages(Beverages beverages) {
+	public void setBeverages(BeverageTypes beverages) {
 		this.beverages = beverages;
 	}
 	public Integer getQuantity() {

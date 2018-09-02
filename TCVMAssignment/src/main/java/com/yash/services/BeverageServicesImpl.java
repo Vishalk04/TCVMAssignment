@@ -7,7 +7,7 @@ import com.yash.dao.ContainerDao;
 import com.yash.exceptions.ContainerOverflowException;
 import com.yash.exceptions.MaterialOutOfStockException;
 import com.yash.model.Beverage;
-import com.yash.model.Beverages;
+import com.yash.model.BeverageTypes;
 import com.yash.model.Container;
 import com.yash.model.Material;
 
@@ -19,7 +19,7 @@ public class BeverageServicesImpl implements IBeverageServices {
 	ContainerDao containerDao = new ContainerDao();
 	
 	@Override
-	public boolean checkBeverageAvailability(Beverages beverageName, int quantity) throws MaterialOutOfStockException, ContainerOverflowException {
+	public boolean checkBeverageAvailability(BeverageTypes beverageName, int quantity) throws MaterialOutOfStockException, ContainerOverflowException {
 		 
 
 		Beverage selectedBeverage =  beverageDao.getBeverage(beverageName);
@@ -43,7 +43,7 @@ public class BeverageServicesImpl implements IBeverageServices {
 	}
 
 	@Override
-	public boolean despenseBeverage(Beverages beverageName, int quantity) throws ContainerOverflowException, MaterialOutOfStockException {
+	public boolean despenseBeverage(BeverageTypes beverageName, int quantity) throws ContainerOverflowException, MaterialOutOfStockException {
 
 		Beverage selectedBeverage =  beverageDao.getBeverage(beverageName);
 			

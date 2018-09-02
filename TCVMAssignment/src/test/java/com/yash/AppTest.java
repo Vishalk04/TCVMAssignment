@@ -48,9 +48,8 @@ public void testReportsSwitchCase1() {
 	
 
 	
-	Mockito.when(scan.getString()).thenReturn("1").thenReturn("5");
+	Mockito.when(scan.getString()).thenReturn("1").thenReturn("5").thenReturn("4");
 	Mockito.when(report.generateTotalSaleReport()).thenReturn(true);
-//	Mockito.when(report.generateTotalSaleReport()).thenReturn(true);
 	
 	
 	app.reports();
@@ -65,7 +64,7 @@ public void testReportsSwitchCase2() {
 	
 
 	
-	Mockito.when(scan.getString()).thenReturn("2");
+	Mockito.when(scan.getString()).thenReturn("2").thenReturn("5").thenReturn("4");
 	Mockito.when(report.getSalesReportByBeverages()).thenReturn(true);
 //	Mockito.when(report.generateTotalSaleReport()).thenReturn(true);
 	
@@ -77,7 +76,7 @@ public void testReportsSwitchCase2() {
 }
 @Test
 public void testReportsSwitchCase3() {
-	Mockito.when(scan.getString()).thenReturn("3").thenReturn("TEA").thenReturn("5");
+	Mockito.when(scan.getString()).thenReturn("3").thenReturn("TEA").thenReturn("5").thenReturn("4");
 	Mockito.when( report.checkContainerStatus("TEA")).thenReturn(100);
 //	Mockito.when(report.generateTotalSaleReport()).thenReturn(true);
 	
@@ -91,7 +90,7 @@ public void testReportsSwitchCase3() {
 public void testReportsSwitchCase4() {
 
 
-	Mockito.when(scan.getString()).thenReturn("4");
+	Mockito.when(scan.getString()).thenReturn("4").thenReturn("5").thenReturn("4");
 	Mockito.when(report.getContainerRefillReport()).thenReturn(true);
 	
 	app.reports();

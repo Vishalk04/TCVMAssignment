@@ -1,6 +1,6 @@
 package com.yash.controllers;
 
-import com.yash.model.Materials;
+import com.yash.model.MaterialTypes;
 import com.yash.services.ContainerServicesImpl;
 import com.yash.services.IContainerServices;
 import com.yash.services.ReportServicesImpl;
@@ -32,7 +32,7 @@ public class ReportImpl implements IReport {
 	@Override
 	public Integer checkContainerStatus(String container) {
 
-		return containerServices.checkContainerStatus(Materials.valueOf(container.toUpperCase()));
+		return containerServices.checkContainerStatus(MaterialTypes.valueOf(container.toUpperCase()));
 
 	}
 	

@@ -14,9 +14,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.yash.dao.BeverageDao;
 import com.yash.model.Beverage;
-import com.yash.model.Beverages;
+import com.yash.model.BeverageTypes;
 import com.yash.model.Material;
-import com.yash.model.Materials;
+import com.yash.model.MaterialTypes;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PriceServicesImplTest {
@@ -38,37 +38,37 @@ public class PriceServicesImplTest {
 	@Test
 	public void shoudReturnPriceWhenAvailable() {
 		Beverage tea = new Beverage(); 
-		tea.setName(Beverages.TEA);
+		tea.setName(BeverageTypes.TEA);
 		tea.setPrice(10.00);
-		tea.setMaterial(Arrays.asList(new Material(Materials.TEA, 10, 10),
+		tea.setMaterial(Arrays.asList(new Material(MaterialTypes.TEA, 10, 10),
 				
-				new Material(Materials.MILK, 10, 10), new Material(Materials.SUGER, 10, 10)));
+				new Material(MaterialTypes.MILK, 10, 10), new Material(MaterialTypes.SUGER, 10, 10)));
 		
 		
-		Mockito.when(beverageDao.getBeverage(Beverages.TEA)).thenReturn(tea);
+		Mockito.when(beverageDao.getBeverage(BeverageTypes.TEA)).thenReturn(tea);
 	
 		
-		assertEquals(new Double(10.00), priceServices.calculateTotalPrice(Beverages.TEA, 1));
+		assertEquals(new Double(10.00), priceServices.calculateTotalPrice(BeverageTypes.TEA, 1));
 
 		
 		
-		Mockito.verify(beverageDao).getBeverage(Beverages.TEA);
+		Mockito.verify(beverageDao).getBeverage(BeverageTypes.TEA);
 	}
 
 	@Test(expected = RuntimeException.class)
 	public void shouldThrowExceptionWhenPriceNotAvailable() {
 		Beverage tea = new Beverage(); 
-		tea.setName(Beverages.TEA);
+		tea.setName(BeverageTypes.TEA);
 	//	tea.setPrice(10.00);
-		tea.setMaterial(Arrays.asList(new Material(Materials.TEA, 10, 10),
+		tea.setMaterial(Arrays.asList(new Material(MaterialTypes.TEA, 10, 10),
 				
-				new Material(Materials.MILK, 10, 10), new Material(Materials.SUGER, 10, 10)));
+				new Material(MaterialTypes.MILK, 10, 10), new Material(MaterialTypes.SUGER, 10, 10)));
 		
-		Mockito.when(beverageDao.getBeverage(Beverages.TEA)).thenReturn(tea);
+		Mockito.when(beverageDao.getBeverage(BeverageTypes.TEA)).thenReturn(tea);
 		
-		priceServices.calculateTotalPrice(Beverages.COFFEE, 1);
+		priceServices.calculateTotalPrice(BeverageTypes.COFFEE, 1);
 		
-		Mockito.verify(beverageDao).getBeverage(Beverages.TEA);
+		Mockito.verify(beverageDao).getBeverage(BeverageTypes.TEA);
 		
 	}
 

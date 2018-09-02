@@ -14,8 +14,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.yash.exceptions.ContainerOverflowException;
 import com.yash.exceptions.MaterialOutOfStockException;
-import com.yash.model.Beverages;
-import com.yash.model.Materials;
+import com.yash.model.BeverageTypes;
+import com.yash.model.MaterialTypes;
 import com.yash.model.Order;
 import com.yash.services.BeverageServicesImpl;
 import com.yash.services.ContainerServicesImpl;
@@ -47,15 +47,15 @@ public class VendingMachineImplTest {
 	public void shouldReturnTotalPriceWhenBeveragesIsAvailable()
 			throws MaterialOutOfStockException, ContainerOverflowException {
 
-		when(beverageServicesImpl.checkBeverageAvailability(Beverages.TEA, 1)).thenReturn(true);
+		when(beverageServicesImpl.checkBeverageAvailability(BeverageTypes.TEA, 1)).thenReturn(true);
 
-		when(priceServicesImpl.calculateTotalPrice(Beverages.TEA, 1)).thenReturn(new Double(10.0));
+		when(priceServicesImpl.calculateTotalPrice(BeverageTypes.TEA, 1)).thenReturn(new Double(10.0));
 
 		assertEquals(new Double(10.00), vendingMachineImpl.checkBeverageAvailabilityAndCalculateTotalPrice("TEA", 1));
 
-		Mockito.verify(beverageServicesImpl).checkBeverageAvailability(Beverages.TEA, 1);
+		Mockito.verify(beverageServicesImpl).checkBeverageAvailability(BeverageTypes.TEA, 1);
 
-		Mockito.verify(priceServicesImpl).calculateTotalPrice(Beverages.TEA, 1);
+		Mockito.verify(priceServicesImpl).calculateTotalPrice(BeverageTypes.TEA, 1);
 
 	}
 
@@ -63,12 +63,12 @@ public class VendingMachineImplTest {
 	public void shouldThrowExceptionWhenMaterialIsNotAvailable()
 			throws MaterialOutOfStockException, ContainerOverflowException {
 
-		when(beverageServicesImpl.checkBeverageAvailability(Beverages.TEA, 1))
+		when(beverageServicesImpl.checkBeverageAvailability(BeverageTypes.TEA, 1))
 				.thenThrow(MaterialOutOfStockException.class);
 
 		vendingMachineImpl.checkBeverageAvailabilityAndCalculateTotalPrice("TEA", 1);
 
-		verify(beverageServicesImpl).checkBeverageAvailability(Beverages.TEA, 1);
+		verify(beverageServicesImpl).checkBeverageAvailability(BeverageTypes.TEA, 1);
 	}
 
 	/*@Ignore
@@ -103,9 +103,9 @@ public class VendingMachineImplTest {
 
 	@Test
 	public void testrefillContainer() throws ContainerOverflowException {
-		when(containerServciesImpl.refillContainer(Materials.TEA, 10)).thenReturn(1);
+		when(containerServciesImpl.refillContainer(MaterialTypes.TEA, 10)).thenReturn(1);
 		vendingMachineImpl.refillContainer("TEA", 10);
-		verify(containerServciesImpl).refillContainer(Materials.TEA, 10);
+		verify(containerServciesImpl).refillContainer(MaterialTypes.TEA, 10);
 	}
 
 	@Test

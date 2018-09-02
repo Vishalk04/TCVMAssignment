@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.yash.exceptions.ContainerOverflowException;
 import com.yash.exceptions.MaterialOutOfStockException;
-import com.yash.model.Materials;
+import com.yash.model.MaterialTypes;
 import com.yash.model.Order;
 
 public interface IVendingMachine{

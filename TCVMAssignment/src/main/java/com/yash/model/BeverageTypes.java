@@ -1,6 +1,6 @@
 package com.yash.model;
 
-public enum Beverages {
+public enum BeverageTypes {
 	
 	TEA, COFFEE, BLACKTEA, BLACKCOFEE;
 /*	

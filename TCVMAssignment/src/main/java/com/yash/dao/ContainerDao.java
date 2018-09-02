@@ -5,20 +5,20 @@ import java.util.Map;
 
 import com.yash.exceptions.ContainerOverflowException;
 import com.yash.model.Container;
-import com.yash.model.Materials;
+import com.yash.model.MaterialTypes;
 
 public class ContainerDao {
 	
-	private static Map<Materials, Integer> containerRefillTransactions = new HashMap<Materials, Integer>();
+	private static Map<MaterialTypes, Integer> containerRefillTransactions = new HashMap<MaterialTypes, Integer>();
 	
 	public  void initialize() {
 
 		try { 
-			Container.put(Materials.TEA, 100);
-			Container.put(Materials.MILK, 100);
-			Container.put(Materials.SUGER, 100);
-			Container.put(Materials.COFFEE, 100);
-			Container.put(Materials.WATER, 100);
+			Container.put(MaterialTypes.TEA, 100);
+			Container.put(MaterialTypes.MILK, 100);
+			Container.put(MaterialTypes.SUGER, 100);
+			Container.put(MaterialTypes.COFFEE, 100);
+			Container.put(MaterialTypes.WATER, 100);
 			
 		} catch (ContainerOverflowException e) {
 			// TODO Auto-generated catch block
@@ -27,15 +27,15 @@ public class ContainerDao {
  
 	} 
 	
-	public  Map<Materials, Integer> getAllRefillTransaction(){
+	public  Map<MaterialTypes, Integer> getAllRefillTransaction(){
 		
-		Map<Materials, Integer> allContainerRefillTransactions = new HashMap<Materials, Integer>(containerRefillTransactions);
+		Map<MaterialTypes, Integer> allContainerRefillTransactions = new HashMap<MaterialTypes, Integer>(containerRefillTransactions);
 		if(allContainerRefillTransactions != null && !(allContainerRefillTransactions.isEmpty()))
 			return allContainerRefillTransactions;
 		throw new RuntimeException("Data Not Available");
 	}
 	
-	public boolean addRefillTransaction(Materials materials, Integer quantity){
+	public boolean addRefillTransaction(MaterialTypes materials, Integer quantity){
 		
 		Integer value = 0;
 		if(containerRefillTransactions.get(materials) != null)
@@ -45,12 +45,12 @@ public class ContainerDao {
 		
 	}
 	
-	public  Integer put(Materials materialName, int quantity) throws ContainerOverflowException {
+	public  Integer put(MaterialTypes materialName, int quantity) throws ContainerOverflowException {
 		return Container.put(materialName, quantity);
 		
 	}
 	
-	public Integer get(Materials materialName) {
+	public Integer get(MaterialTypes materialName) {
 		return Container.get(materialName);
 	}
 	
@@ -59,7 +59,7 @@ public class ContainerDao {
 	}*/
 	
 	
-	public Integer getSize(Materials materialName){
+	public Integer getSize(MaterialTypes materialName){
 		return Container.getSize(materialName);
 	}
 	

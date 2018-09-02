@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Beverage {
 
-	Beverages name;
+	BeverageTypes name;
 	String beverageId;
 	Double price;
 	
@@ -19,7 +19,7 @@ public class Beverage {
 	private List<Material> material;
 
 
-	public void setName(Beverages name) {
+	public void setName(BeverageTypes name) {
 		this.name = name;
 	}
 

@@ -10,7 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.yash.model.Materials;
+import com.yash.model.MaterialTypes;
 import com.yash.services.ContainerServicesImpl;
 import com.yash.services.IContainerServices;
 import com.yash.services.ReportServicesImpl;
@@ -48,9 +48,9 @@ public class ReportImplTest {
 
 	@Test
 	public void testheckContainerStatus() {
-		Mockito.when(containerServices.checkContainerStatus(Materials.TEA)).thenReturn(1);
+		Mockito.when(containerServices.checkContainerStatus(MaterialTypes.TEA)).thenReturn(1);
 		assertEquals(new Integer(1), reportImpl.checkContainerStatus("TEA"));
-		Mockito.verify(containerServices).checkContainerStatus(Materials.TEA);
+		Mockito.verify(containerServices).checkContainerStatus(MaterialTypes.TEA);
 	}
 	
 	@Test

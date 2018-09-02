@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.yash.dao.OrderDao;
-import com.yash.model.Beverages;
+import com.yash.model.BeverageTypes;
 import com.yash.model.Order;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -22,7 +22,7 @@ public class OrderServicesImplTest {
 		Order order = new Order();
 		order.setTotalPrice(new Double(20.00));
 		order.setBeverageId("2");
-		order.setBeverages(Beverages.TEA);
+		order.setBeverages(BeverageTypes.TEA);
 		order.setOrderId(5);
 		order.setQuantity(2);
 		assertTrue(orderServices.saveOrder(order));
