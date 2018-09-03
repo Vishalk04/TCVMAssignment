@@ -59,8 +59,7 @@ public class VendingMachineImpl implements IVendingMachine {
 		beveregeServices.despenseBeverage(BeverageTypes.valueOf(beverage), quantity);
 		
 		order = new Order(); 
-		
-		//Double totalPrice = order.getTotalPrice(); 
+		 
 		
 		order.setBeverages(BeverageTypes.valueOf(beverage));
 		order.setQuantity(quantity);
@@ -81,8 +80,8 @@ public class VendingMachineImpl implements IVendingMachine {
 
 	@Override
 	public void resetContainer() throws ContainerOverflowException {
-		// TODO Auto-generated method stub
-		
+	
+		containerServices.resetContainers();
 	}
 
 

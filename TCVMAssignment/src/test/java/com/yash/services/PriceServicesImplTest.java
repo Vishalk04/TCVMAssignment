@@ -68,8 +68,13 @@ public class PriceServicesImplTest {
 		
 		priceServices.calculateTotalPrice(BeverageTypes.COFFEE, 1);
 		
-		Mockito.verify(beverageDao).getBeverage(BeverageTypes.TEA);
-		
+	//	Mockito.verify(beverageDao).getBeverage(BeverageTypes.TEA);
+	
+	}
+	
+	@Test
+	public void shouldCalculateChange(){
+		assertEquals(new Double(40.00), priceServices.calculateChange(new Double(50.00), new Double(10.00)));
 	}
 
 }

@@ -6,28 +6,32 @@ import com.yash.dao.OrderDao;
 import com.yash.exceptions.ContainerOverflowException;
 
 public class BootstrapApp {
-	
-	public void CreateAllData(){
-	
+
+	BeverageDao beverageDao;
+
+	ContainerDao containerDao;
+
+	public BootstrapApp() {
+
+		beverageDao = new BeverageDao();
+		containerDao = new ContainerDao();
+
+	}
+
+	public void CreateAllData() throws ContainerOverflowException {
+
 		System.out.println("Starting vending Machine.... ");
-		
-		new ContainerDao().initialize();
-		
-	//	new OrderDao().initialize();
-		
+
+		containerDao.initialize();
+
 		System.out.println("All Container are filled .!");
-		
-		try {
-			
-			new BeverageDao().initialize(); 
-			 
-			System.out.println("Beverages are prepared...! and Good to Go");
-			
-		} catch (ContainerOverflowException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+try{
+		beverageDao.initialize();
+}catch(ContainerOverflowException e){
+	e.printStackTrace();
+}
+		System.out.println("Beverages are prepared...! and Good to Go");
+
 	}
 
 }

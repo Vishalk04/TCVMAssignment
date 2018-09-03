@@ -23,14 +23,29 @@ public class BeverageDao {
 				
 				new Material(MaterialTypes.MILK, 10, 10), new Material(MaterialTypes.SUGER, 10, 10)));
 		
+		
+		Beverage blackTea = new Beverage(); 
+		tea.setName(BeverageTypes.TEA);
+		tea.setPrice(10.00);
+		tea.setMaterial(Arrays.asList(new Material(MaterialTypes.TEA, 10, 10),
+						new Material(MaterialTypes.SUGER, 10, 10)));
+		
+		
 		Beverage coffee = new Beverage();
 		//coffee.setPrice(10.00);
+		coffee.setName(BeverageTypes.COFFEE);
+		coffee.setMaterial(Arrays.asList(new Material(MaterialTypes.COFFEE, 10, 10), new Material(MaterialTypes.MILK, 10, 10),
+				new Material(MaterialTypes.SUGER, 10, 10)));
+		
+		Beverage blackCoffee = new Beverage();
 		coffee.setName(BeverageTypes.COFFEE);
 		coffee.setMaterial(Arrays.asList(new Material(MaterialTypes.COFFEE, 10, 10), new Material(MaterialTypes.MILK, 10, 10),
 				new Material(MaterialTypes.SUGER, 10, 10)));
 
 		availableBeverages.put(BeverageTypes.TEA, tea);
 		availableBeverages.put(BeverageTypes.COFFEE, coffee);
+		availableBeverages.put(BeverageTypes.BLACKTEA, blackTea);
+		availableBeverages.put(BeverageTypes.BLACKCOFEE, blackCoffee);
 
 	}
 

@@ -1,15 +1,11 @@
 package com.yash.dao;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
-
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.yash.exceptions.ContainerOverflowException;
-import com.yash.model.Container;
 import com.yash.model.MaterialTypes;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -51,13 +47,6 @@ public class ContainerDaoTest {
 		
 	}
 	
-/*	@Test
-	public void shouldReturnZeroFromContainerWhenContainerInitailized(){
-		
-		assertEquals(new Integer(0), containerDao.getSize(Materials.TEA));
-		
-	}
-*/	
 	@Test
 	public void shouldReturnContainer(){
 		containerDao.get(MaterialTypes.TEA);

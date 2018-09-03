@@ -66,12 +66,6 @@ public class BeverageServicesImplTest {
 
 	}
 
-	@After
-	public void tearDown() {
-		beverageServices = null;
-		containerDao = null;
-		beverageDao = null;
-	}
 
 	@Test
 	public void shouldReturnTrueWhenAllMaterialAreAvailable()
@@ -127,9 +121,9 @@ public class BeverageServicesImplTest {
 		
 		beverageServices.despenseBeverage(BeverageTypes.TEA, 1);
 
-/*
-		verify(containerServicesImpl).despenseMaterial(tea, 1);
-		verify(beverageDao).getBeverage(Beverages.TEA);*/
+
+	
+		
 	}
 	
 	

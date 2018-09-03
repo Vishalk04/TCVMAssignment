@@ -31,12 +31,11 @@ public class OrderServicesImplTest {
 	@Test
 	public void shouldReturnFalseWhenOrderIsNotSaved() {
 		Order order = new Order();
-		/*order.setAmount(new Double(10.00));
-		order.setBeverageId("1");
-		order.setBeverages(Beverages.BLACKCOFEE);
-		order.setOrderId("1");
-		order.setQuantity(2);*/
+	
 		assertTrue(orderServices.saveOrder(order));
+		
 	}
+	
+	
 
 }

@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -61,45 +60,35 @@ public class VendingMachineImplTest {
 
 	@Test(expected = MaterialOutOfStockException.class)
 	public void shouldThrowExceptionWhenMaterialIsNotAvailable()
-			throws MaterialOutOfStockException, ContainerOverflowException {
+			throws MaterialOutOfStockException, ContainerOverflowException { 
 
-		when(beverageServicesImpl.checkBeverageAvailability(BeverageTypes.TEA, 1))
-				.thenThrow(MaterialOutOfStockException.class);
+		Mockito.doThrow(MaterialOutOfStockException.class).when(beverageServicesImpl).checkBeverageAvailability(BeverageTypes.TEA, 1);
 
 		vendingMachineImpl.checkBeverageAvailabilityAndCalculateTotalPrice("TEA", 1);
-
-		verify(beverageServicesImpl).checkBeverageAvailability(BeverageTypes.TEA, 1);
+		
 	}
 
-	/*@Ignore
+
 	@Test
 	public void shouldReturnChangeAndDespencebeverage() throws MaterialOutOfStockException, ContainerOverflowException {
 
-
-		when(beverageServicesImpl.despenseBeverage(Beverages.TEA, 1)).thenReturn(true);
+		when(beverageServicesImpl.despenseBeverage(BeverageTypes.TEA, 1)).thenReturn(true);
 
 		when(orderServices.saveOrder(order)).thenReturn(true);
 		
 		when(priceServicesImpl.calculateChange(new Double(20.00), new Double(10.00))).thenReturn(new Double(10.00));
 
-		Double actualValue = vendingMachineImpl.placeBeverageOrderAndReturnChange("TEA", 1, new Double(20.00));
+		Double actualValue = vendingMachineImpl.placeBeverageOrderAndReturnChange("TEA", 1, 10.00, new Double(20.00));
 
 		assertEquals(new Double(10.00), actualValue);
-
+ 		
+		Mockito.verify(beverageServicesImpl).despenseBeverage(BeverageTypes.TEA, 1);
 		
-		 * Mockito.verify(beverageServicesImpl).despenseBeverage(Beverages.TEA, 1);
-		 * 
-		 * Mockito.verify(priceServicesImpl).calculateChange(new Double(20.00), new
-		 * Double(10.00));
-		 * 
-		 * Mockito.verify(beverageServicesImpl).checkBeverageAvailability(Beverages.TEA,
-		 * 1);
-		 * 
-		 * Mockito.verify(priceServicesImpl).calculateTotalPrice(Beverages.TEA, 1);
-		 
-
+     	Mockito.verify(priceServicesImpl).calculateChange(new Double(20.00), new
+		
+     	Double(10.00));
 	}
-*/
+
 
 	@Test
 	public void testrefillContainer() throws ContainerOverflowException {
