@@ -27,13 +27,6 @@ public class PriceServicesImplTest {
 	@Mock
 	BeverageDao beverageDao;
 
-	@Before
-	public void setUp() {
-		//priceServices = new PriceServicesImpl();
-		//beverageDao = new BeverageDao();
-		
-		
-	}
 
 	@Test
 	public void shoudReturnPriceWhenAvailable() {

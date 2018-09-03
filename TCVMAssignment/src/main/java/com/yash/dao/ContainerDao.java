@@ -55,9 +55,6 @@ public class ContainerDao {
 		return Container.get(materialName);
 	}
 	
-	/*public void clean() {
-		Container.clean();
-	}*/
 	
 	
 	public Integer getSize(MaterialTypes materialName){

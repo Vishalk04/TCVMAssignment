@@ -140,7 +140,7 @@ public class App {
 
 			}
 
-			Double change = vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, price, enteredAmount);
+			Double change = vendingMachine.placeBeverageOrderAndReturnChange(beverage, 1, price, enteredAmount);
 			if (change > 0.0) {
 				System.out.println("Please take Your Change Rs: " + change);
 				System.out.println(".....");

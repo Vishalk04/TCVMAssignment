@@ -10,7 +10,7 @@ public class ReportImpl implements IReport {
 	ReportServicesImpl reportServices;
 	IContainerServices containerServices;
 
-	public ReportImpl() {
+	public ReportImpl() { 
 		reportServices = new ReportServicesImpl();
 		containerServices = new ContainerServicesImpl();
 	}

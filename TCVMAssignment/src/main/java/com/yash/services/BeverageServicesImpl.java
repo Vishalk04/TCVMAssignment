@@ -27,7 +27,7 @@ public class BeverageServicesImpl implements IBeverageServices {
 		List<Material> material = selectedBeverage.getMaterial();
 		
 	
-		for (Material materials : material) {  
+		for (Material materials : material) { 
  
 			int requiredQuantity = (materials.getConsumptionOfMaterial()+materials.getWasteOfMaterial())*quantity ;
 

@@ -12,7 +12,6 @@ import com.yash.controllers.VendingMachineImpl;
 import com.yash.exceptions.ContainerOverflowException;
 import com.yash.exceptions.MaterialOutOfStockException;
 import com.yash.model.InputScanner;
-import com.yash.services.ContainerServicesImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AppTest {  
@@ -50,11 +49,13 @@ public void testStartSwitchCase2() throws ContainerOverflowException, MaterialOu
 	
 	Mockito.when(scan.getString()).thenReturn("2").thenReturn("11");
 	
+	Mockito.when(scan.nextInt()).thenReturn(1); 
+	
 	Mockito.when(vendingMachine.checkBeverageAvailabilityAndCalculateTotalPrice("BLACKTEA",1)).thenReturn(new Double(10.00));
 	
 	Mockito.when(scan.nextDouble()).thenReturn(50.00);
 	
-	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("BLACKTEA", 1, 10.00, 50.00)).thenReturn(40.00);
+	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("BLACKTEA", 1, new Double(10.00), new Double(50.00))).thenReturn(new Double(40.00));
 	
 	 app.start();
 }
