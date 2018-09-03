@@ -1,12 +1,12 @@
 package com.yash.model;
 
-public enum Materials {
+public enum MaterialTypes {
 	
 	TEA(100), COFFEE(100), MILK(100), SUGER(100), WATER(100);
 	
 	private int capacity;
 	
-	Materials(int capacity){
+	MaterialTypes(int capacity){
 		this.capacity = capacity;
 	}
 	

@@ -7,14 +7,14 @@ import com.yash.exceptions.ContainerOverflowException;
 import com.yash.exceptions.MaterialOutOfStockException;
 import com.yash.model.Beverage;
 import com.yash.model.Material;
-import com.yash.model.Materials;
+import com.yash.model.MaterialTypes;
 
 public class ContainerServicesImpl implements IContainerServices {
 
 	ContainerDao containerDao = new ContainerDao();
 
 	@Override
-	public Integer addMaterial(Materials materialsName, int quantity) throws ContainerOverflowException {
+	public Integer addMaterial(MaterialTypes materialsName, int quantity) throws ContainerOverflowException {
 
 		Integer size = 0;
 
@@ -53,7 +53,7 @@ public class ContainerServicesImpl implements IContainerServices {
 	}
 
 	@Override
-	public Integer refillContainer(Materials material, int quantity) throws ContainerOverflowException {
+	public Integer refillContainer(MaterialTypes material, int quantity) throws ContainerOverflowException {
 		
 		int  currentAvailableMaterial = containerDao.get(material);
 		
@@ -71,23 +71,23 @@ public class ContainerServicesImpl implements IContainerServices {
 
 	@Override
 	public void resetContainers() throws ContainerOverflowException{
-		Materials[] materials = Materials.values();
+		MaterialTypes[] materials = MaterialTypes.values();
 		
-		for (Materials materials2 : materials) {
+		for (MaterialTypes materials2 : materials) {
 			containerDao.put(materials2, materials2.getCapacity());
 		}
 		
 	}
 
 	@Override
-	public Integer checkContainerStatus(Materials container) {
+	public Integer checkContainerStatus(MaterialTypes container) {
 			
 		return containerDao.getSize(container);
 		
 	}
 	
 	@Override
-	public boolean addrefillContainerTransaction(Materials material, Integer quantity){
+	public boolean addrefillContainerTransaction(MaterialTypes material, Integer quantity){
 		return containerDao.addRefillTransaction(material, quantity);
 	}
 

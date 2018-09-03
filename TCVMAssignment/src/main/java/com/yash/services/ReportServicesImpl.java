@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 import com.yash.dao.ContainerDao;
 import com.yash.dao.OrderDao;
-import com.yash.model.Beverages;
-import com.yash.model.Materials;
+import com.yash.model.BeverageTypes;
+import com.yash.model.MaterialTypes;
 import com.yash.model.Order;
 
 public class ReportServicesImpl implements IReportServices {
@@ -44,9 +44,9 @@ public class ReportServicesImpl implements IReportServices {
 		if (orders == null)
 			throw new RuntimeException("Data Not Available");
 
-		Map<Beverages, Integer> totalCupByBeverages = orders.stream()
+		Map<BeverageTypes, Integer> totalCupByBeverages = orders.stream()
 				.collect(Collectors.groupingBy(Order::getBeverages, Collectors.summingInt(Order::getQuantity)));
-		Map<Beverages, Double> totalSaleBybeverages = orders.stream()
+		Map<BeverageTypes, Double> totalSaleBybeverages = orders.stream()
 				.collect(Collectors.groupingBy(Order::getBeverages, Collectors.summingDouble(Order::getTotalPrice)));
 
 		System.out.println("------------------------Sales Report By Beverages----------------------------");

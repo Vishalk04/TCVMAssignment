@@ -18,7 +18,7 @@ import org.xml.sax.DocumentHandler;
 
 import com.yash.dao.ContainerDao;
 import com.yash.dao.OrderDao;
-import com.yash.model.Beverages;
+import com.yash.model.BeverageTypes;
 import com.yash.model.Order;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -41,7 +41,7 @@ public class ReportServicesImplTest {
 		Order order = new Order();
 		order.setTotalPrice(new Double(10.00));
 		order.setBeverageId("1");
-		order.setBeverages(Beverages.BLACKCOFEE);
+		order.setBeverages(BeverageTypes.BLACKCOFEE);
 		order.setOrderId(1);
 		order.setQuantity(2);
 		orders.add(order);
@@ -49,7 +49,7 @@ public class ReportServicesImplTest {
 		Order order1 = new Order();
 		order1.setTotalPrice(new Double(10.00));
 		order1.setBeverageId("1");
-		order1.setBeverages(Beverages.BLACKCOFEE);
+		order1.setBeverages(BeverageTypes.BLACKCOFEE);
 		order1.setOrderId(1);
 		order1.setQuantity(2);
 		orders.add(order1);
@@ -57,7 +57,7 @@ public class ReportServicesImplTest {
 		Order order2 = new Order();
 		order2.setTotalPrice(new Double(20.00));
 		order2.setBeverageId("2");
-		order2.setBeverages(Beverages.TEA);
+		order2.setBeverages(BeverageTypes.TEA);
 		order2.setOrderId(5);
 		order2.setQuantity(2);
 		orders.add(order2);

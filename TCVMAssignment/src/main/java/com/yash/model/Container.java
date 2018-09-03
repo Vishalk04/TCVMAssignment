@@ -8,15 +8,15 @@ import com.yash.exceptions.ContainerOverflowException;
 
 public class Container {
 
-	private static Map<Materials, Integer> container = new HashMap<Materials, Integer>();
+	private static Map<MaterialTypes, Integer> container = new HashMap<MaterialTypes, Integer>();
 
-	public static Integer put(Materials materialName, int quantity) throws ContainerOverflowException {
+	public static Integer put(MaterialTypes materialName, int quantity) throws ContainerOverflowException {
 
 		return container.put(materialName, quantity);
 
 	}
 
-	public static int getSize(Materials materialName) {
+	public static int getSize(MaterialTypes materialName) {
 
 		if (container.get(materialName) != null)
 			return container.get(materialName);
@@ -24,17 +24,8 @@ public class Container {
 
 	}
 
-/*	public static void clean() {
 
-		Set<Materials> keyset = container.keySet();
-
-		for (Materials materials : keyset) {
-			container.put(materials, 0);
-		}
-
-	}*/
-
-	public static Integer get(Materials materialName) {
+	public static Integer get(MaterialTypes materialName) {
 		// TODO Auto-generated method stub
 		return container.get(materialName); 
 	}

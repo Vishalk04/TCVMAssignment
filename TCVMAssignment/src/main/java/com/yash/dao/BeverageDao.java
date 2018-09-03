@@ -6,35 +6,35 @@ import java.util.Map;
 
 import com.yash.exceptions.ContainerOverflowException;
 import com.yash.model.Beverage;
-import com.yash.model.Beverages;
+import com.yash.model.BeverageTypes;
 import com.yash.model.Material;
-import com.yash.model.Materials;
+import com.yash.model.MaterialTypes;
 
 public class BeverageDao {
 
-	private static Map<Beverages, Beverage> availableBeverages = new HashMap<Beverages, Beverage>();
+	private static Map<BeverageTypes, Beverage> availableBeverages = new HashMap<BeverageTypes, Beverage>();
 
 	public void initialize() throws ContainerOverflowException {
 
 		Beverage tea = new Beverage(); 
-		tea.setName(Beverages.TEA);
+		tea.setName(BeverageTypes.TEA);
 		tea.setPrice(10.00);
-		tea.setMaterial(Arrays.asList(new Material(Materials.TEA, 10, 10),
+		tea.setMaterial(Arrays.asList(new Material(MaterialTypes.TEA, 10, 10),
 				
-				new Material(Materials.MILK, 10, 10), new Material(Materials.SUGER, 10, 10)));
+				new Material(MaterialTypes.MILK, 10, 10), new Material(MaterialTypes.SUGER, 10, 10)));
 		
 		Beverage coffee = new Beverage();
 		//coffee.setPrice(10.00);
-		coffee.setName(Beverages.COFFEE);
-		coffee.setMaterial(Arrays.asList(new Material(Materials.COFFEE, 10, 10), new Material(Materials.MILK, 10, 10),
-				new Material(Materials.SUGER, 10, 10)));
+		coffee.setName(BeverageTypes.COFFEE);
+		coffee.setMaterial(Arrays.asList(new Material(MaterialTypes.COFFEE, 10, 10), new Material(MaterialTypes.MILK, 10, 10),
+				new Material(MaterialTypes.SUGER, 10, 10)));
 
-		availableBeverages.put(Beverages.TEA, tea);
-		availableBeverages.put(Beverages.COFFEE, coffee);
+		availableBeverages.put(BeverageTypes.TEA, tea);
+		availableBeverages.put(BeverageTypes.COFFEE, coffee);
 
 	}
 
-	public Beverage getBeverage(Beverages beverages) {
+	public Beverage getBeverage(BeverageTypes beverages) {
 
 		return availableBeverages.get(beverages);
 

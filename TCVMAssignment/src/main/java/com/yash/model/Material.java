@@ -2,26 +2,18 @@ package com.yash.model;
 
 public class Material {
 
-	public Material(Materials material, int ConsumptionOfMaterial, int wasteOfMaterial) {
+	public Material(MaterialTypes material, int ConsumptionOfMaterial, int wasteOfMaterial) {
 		this.materialName = material;
 		this.ConsumptionOfMaterial = ConsumptionOfMaterial;
 		this.wasteOfMaterial = wasteOfMaterial;
 	}
 	
 	String MaterialId;
-	Materials materialName;
+	MaterialTypes materialName;
 	int ConsumptionOfMaterial;
 	int wasteOfMaterial;
-
 	
-	public String getMaterialId() {
-		return MaterialId;
-	}
-	public void setMaterialId(String materialId) {
-		MaterialId = materialId;
-	}
-	
-	public Materials getMaterialName() {
+	public MaterialTypes getMaterialName() {
 		return materialName;
 	}
 	public int getConsumptionOfMaterial() {

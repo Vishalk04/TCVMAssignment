@@ -22,9 +22,9 @@ import com.yash.dao.ContainerDao;
 import com.yash.exceptions.ContainerOverflowException;
 import com.yash.exceptions.MaterialOutOfStockException;
 import com.yash.model.Beverage;
-import com.yash.model.Beverages;
+import com.yash.model.BeverageTypes;
 import com.yash.model.Material;
-import com.yash.model.Materials;
+import com.yash.model.MaterialTypes;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BeverageServicesImplTest {
@@ -47,17 +47,17 @@ public class BeverageServicesImplTest {
 	public void setup() throws ContainerOverflowException {
 
 		tea = new Beverage();
-		tea.setName(Beverages.TEA);
+		tea.setName(BeverageTypes.TEA);
 		tea.setPrice(10.00);
-		tea.setMaterial(Arrays.asList(new Material(Materials.TEA, 10, 10),
+		tea.setMaterial(Arrays.asList(new Material(MaterialTypes.TEA, 10, 10),
 
-				new Material(Materials.MILK, 10, 10), new Material(Materials.SUGER, 10, 10)));
+				new Material(MaterialTypes.MILK, 10, 10), new Material(MaterialTypes.SUGER, 10, 10)));
 
 		coffee = new Beverage();
 		// coffee.setPrice(10.00);
-		coffee.setName(Beverages.COFFEE);
-		coffee.setMaterial(Arrays.asList(new Material(Materials.COFFEE, 10, 10), new Material(Materials.MILK, 10, 10),
-				new Material(Materials.SUGER, 10, 10)));
+		coffee.setName(BeverageTypes.COFFEE);
+		coffee.setMaterial(Arrays.asList(new Material(MaterialTypes.COFFEE, 10, 10), new Material(MaterialTypes.MILK, 10, 10),
+				new Material(MaterialTypes.SUGER, 10, 10)));
 
 		/*
 		 * availableBeverages.put(Beverages.TEA, tea);
@@ -77,17 +77,17 @@ public class BeverageServicesImplTest {
 	public void shouldReturnTrueWhenAllMaterialAreAvailable()
 			throws MaterialOutOfStockException, ContainerOverflowException {
 
-		when(beverageDao.getBeverage(Beverages.TEA)).thenReturn(tea);
-		when(containerDao.getSize(Materials.TEA)).thenReturn(100);
-		when(containerDao.getSize(Materials.MILK)).thenReturn(100);
-		when(containerDao.getSize(Materials.SUGER)).thenReturn(100);
+		when(beverageDao.getBeverage(BeverageTypes.TEA)).thenReturn(tea);
+		when(containerDao.getSize(MaterialTypes.TEA)).thenReturn(100);
+		when(containerDao.getSize(MaterialTypes.MILK)).thenReturn(100);
+		when(containerDao.getSize(MaterialTypes.SUGER)).thenReturn(100);
 
-		assertTrue(beverageServices.checkBeverageAvailability(Beverages.TEA, 1));
+		assertTrue(beverageServices.checkBeverageAvailability(BeverageTypes.TEA, 1));
 
-		verify(beverageDao).getBeverage(Beverages.TEA);
-		verify(containerDao).getSize(Materials.TEA);
-		verify(containerDao).getSize(Materials.MILK);
-		verify(containerDao).getSize(Materials.SUGER);
+		verify(beverageDao).getBeverage(BeverageTypes.TEA);
+		verify(containerDao).getSize(MaterialTypes.TEA);
+		verify(containerDao).getSize(MaterialTypes.MILK);
+		verify(containerDao).getSize(MaterialTypes.SUGER);
 
 	} 
 
@@ -95,45 +95,41 @@ public class BeverageServicesImplTest {
 	public void shuldThrowExceptionIfMaterialIsOutOfStock()
 			throws MaterialOutOfStockException, ContainerOverflowException {
 
-		when(beverageDao.getBeverage(Beverages.TEA)).thenReturn(tea); 
-		when(containerDao.getSize(Materials.TEA)).thenReturn(0);
-		when(containerDao.getSize(Materials.MILK)).thenReturn(0);
-		when(containerDao.getSize(Materials.SUGER)).thenReturn(0);
+		when(beverageDao.getBeverage(BeverageTypes.TEA)).thenReturn(tea); 
 
-		beverageServices.checkBeverageAvailability(Beverages.TEA, 1);
+	
 
-		verify(beverageDao).getBeverage(Beverages.TEA);
-		verify(containerDao).getSize(Materials.TEA);
-		verify(containerDao).getSize(Materials.MILK);
-		verify(containerDao).getSize(Materials.SUGER);
+		beverageServices.checkBeverageAvailability(BeverageTypes.TEA, 1);
+
+		
 	}
 
 	@Test
 	public void testDespenseBeverage() throws ContainerOverflowException, MaterialOutOfStockException {
 
 		when(containerServicesImpl.despenseMaterial(tea, 1)).thenReturn(true);
-		when(beverageDao.getBeverage(Beverages.TEA)).thenReturn(tea);
+		when(beverageDao.getBeverage(BeverageTypes.TEA)).thenReturn(tea);
 		
-		assertTrue(beverageServices.despenseBeverage(Beverages.TEA, 1));
+		assertTrue(beverageServices.despenseBeverage(BeverageTypes.TEA, 1));
 
 		verify(containerServicesImpl).despenseMaterial(tea, 1);
-		verify(beverageDao).getBeverage(Beverages.TEA);
+		verify(beverageDao).getBeverage(BeverageTypes.TEA);
 	}
 
 	
 	@Test(expected = MaterialOutOfStockException.class)
 	public void shouldThrowExceptionWhenMaterialIsOutOfStock()
 			throws ContainerOverflowException, MaterialOutOfStockException {
-		when(beverageDao.getBeverage(Beverages.TEA)).thenReturn(tea);
+		when(beverageDao.getBeverage(BeverageTypes.TEA)).thenReturn(tea);
 	//	when(containerServicesImpl.despenseMaterial(tea, 1)).thenReturn(true);
 		doThrow(MaterialOutOfStockException.class).when(containerServicesImpl).despenseMaterial(tea, 1);
 	
 		
-		beverageServices.despenseBeverage(Beverages.TEA, 1);
+		beverageServices.despenseBeverage(BeverageTypes.TEA, 1);
 
-
+/*
 		verify(containerServicesImpl).despenseMaterial(tea, 1);
-		verify(beverageDao).getBeverage(Beverages.TEA);
+		verify(beverageDao).getBeverage(Beverages.TEA);*/
 	}
 	
 	

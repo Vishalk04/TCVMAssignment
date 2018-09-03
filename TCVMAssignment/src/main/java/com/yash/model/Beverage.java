@@ -4,9 +4,10 @@ import java.util.List;
 
 public class Beverage {
 
-	Beverages name;
+	BeverageTypes name;
 	String beverageId;
 	Double price;
+	
 	public Double getPrice() {
 		return price;
 	}
@@ -16,12 +17,9 @@ public class Beverage {
 	}
 
 	private List<Material> material;
-	
-	public Beverages getName() {
-		return name;
-	}
 
-	public void setName(Beverages name) {
+
+	public void setName(BeverageTypes name) {
 		this.name = name;
 	}
 

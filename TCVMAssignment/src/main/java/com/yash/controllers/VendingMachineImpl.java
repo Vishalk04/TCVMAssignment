@@ -1,11 +1,9 @@
 package com.yash.controllers;
 
-import java.util.List;
-
 import com.yash.exceptions.ContainerOverflowException;
 import com.yash.exceptions.MaterialOutOfStockException;
-import com.yash.model.Beverages;
-import com.yash.model.Materials;
+import com.yash.model.BeverageTypes;
+import com.yash.model.MaterialTypes;
 import com.yash.model.Order;
 import com.yash.services.BeverageServicesImpl;
 import com.yash.services.ContainerServicesImpl;
@@ -23,9 +21,10 @@ public class VendingMachineImpl implements IVendingMachine {
 
 	IContainerServices containerServices;
 
-	Order order;
+	private Order order;
 
 	OrderServicesImpl orderServices;
+	
 
 	public VendingMachineImpl() throws ContainerOverflowException {
 
@@ -42,10 +41,10 @@ public class VendingMachineImpl implements IVendingMachine {
 
 		
 
-		beveregeServices.checkBeverageAvailability(Beverages.valueOf(beverage), quantity);
+		beveregeServices.checkBeverageAvailability(BeverageTypes.valueOf(beverage), quantity);
 	
 
-		Double totalPrice = priceServices.calculateTotalPrice(Beverages.valueOf(beverage), quantity);
+		Double totalPrice = priceServices.calculateTotalPrice(BeverageTypes.valueOf(beverage), quantity);
 
 		
 
@@ -54,41 +53,38 @@ public class VendingMachineImpl implements IVendingMachine {
 	}
 
 	@Override
-	public Double placeBeverageOrderAndReturnChange(String beverage, int quantity, Double amount)
-			throws MaterialOutOfStockException, ContainerOverflowException { 
-
-		beveregeServices.despenseBeverage(Beverages.valueOf(beverage), quantity);
+	public Double placeBeverageOrderAndReturnChange(String beverage, int quantity, Double price, double enteredAmount)
+			throws MaterialOutOfStockException, ContainerOverflowException {
+	
+		beveregeServices.despenseBeverage(BeverageTypes.valueOf(beverage), quantity);
+		
 		order = new Order(); 
 		
-		Double totalPrice = order.getTotalPrice(); 
+		//Double totalPrice = order.getTotalPrice(); 
 		
-		order.setBeverages(Beverages.valueOf(beverage));
+		order.setBeverages(BeverageTypes.valueOf(beverage));
 		order.setQuantity(quantity);
-		order.setTotalPrice(totalPrice);
+		order.setTotalPrice(price);
 		
 		orderServices.saveOrder(order);
-		return priceServices.calculateChange(amount, totalPrice);
+		
+		return priceServices.calculateChange(enteredAmount, price);
+		
 	}
 
 	@Override
 	public Integer refillContainer(String container, int quantity) throws ContainerOverflowException {
 
-		return containerServices.refillContainer(Materials.valueOf(container.toUpperCase()), quantity);
+		return containerServices.refillContainer(MaterialTypes.valueOf(container.toUpperCase()), quantity);
 
 	}
 
 	@Override
 	public void resetContainer() throws ContainerOverflowException {
-
-		containerServices.resetContainers();
-
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void destroy() {
-		beveregeServices = null;
-		priceServices = null;
-		containerServices = null;
-		orderServices = null;
-	}
+
 
 }
