@@ -1,6 +1,11 @@
 package com.yash.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -13,12 +18,13 @@ public class ContainerDaoTest {
 
 	ContainerDao containerDao;
 	
+	private static Map<MaterialTypes, Integer> container = new HashMap<MaterialTypes, Integer>();
 	public ContainerDaoTest() {
 	
 		containerDao = new ContainerDao();
 		
 		
-	}
+	} 
 
 	@Test
 	public void shouldAddRefillTransation() {
@@ -40,7 +46,14 @@ public class ContainerDaoTest {
 	}
 	
 	@Test
-	public void shouldReturnAvailabelMaterialFromContainerWhenContainerInitailized(){
+	public void testGetAllRefillTransaction() {
+		
+		containerDao.addRefillTransaction(MaterialTypes.TEA, 10);
+		containerDao.getAllRefillTransaction();
+	}
+	
+	@Test
+	public void shouldReturnAvailabelMaterialFromContainerWhenContainerInitailized() throws ContainerOverflowException{
 		
 		containerDao.initialize();
 		assertEquals(new Integer(100), containerDao.getSize(MaterialTypes.TEA));
@@ -49,7 +62,7 @@ public class ContainerDaoTest {
 	
 	@Test
 	public void shouldReturnContainer(){
-		containerDao.get(MaterialTypes.TEA);
+		containerDao.get(MaterialTypes.TEA); 
 	}
 
 	

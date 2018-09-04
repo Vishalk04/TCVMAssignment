@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.yash.controllers.IVendingMachine;
 import com.yash.controllers.ReportImpl;
 import com.yash.controllers.VendingMachineImpl;
 import com.yash.exceptions.ContainerOverflowException;
@@ -20,8 +21,11 @@ public class AppTest {
 	@InjectMocks
 	 App app;
 	
+	 @Mock
+	 InputScanner scan;
+	 
 	@Mock
-	VendingMachineImpl vendingMachine;
+	IVendingMachine vendingMachine;
 	
 	
 	
@@ -33,11 +37,29 @@ public class AppTest {
 public void testStartSwitchCase1() throws ContainerOverflowException, MaterialOutOfStockException{
 	
 	Mockito.when(scan.getString()).thenReturn("1").thenReturn("11");
-	Mockito.when(vendingMachine.checkBeverageAvailabilityAndCalculateTotalPrice("TEA",1)).thenReturn(10.00);
+	
+	Mockito.when(vendingMachine.checkBeverageAvailabilityAndCalculateTotalPrice("TEA",1)).thenReturn(new Double(10.00));
 	
 	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, 10.00, 10.00)).thenReturn(0.00);
 	
 	
+	Mockito.when(scan.nextDouble()).thenReturn(5.00).thenReturn(5.00); 
+	
+	app.start();
+	
+}
+
+
+@Test
+public void shouldThrowExceptionStartSwitchCase1() throws ContainerOverflowException, MaterialOutOfStockException{
+	 
+	Mockito.when(scan.getString()).thenReturn("1").thenReturn("11");
+	//Mockito.doThrow(ContainerOverflowException.class).when(vendingMachine).checkBeverageAvailabilityAndCalculateTotalPrice("TEA",1);
+	Mockito.when(vendingMachine.checkBeverageAvailabilityAndCalculateTotalPrice("TEA",1)).thenReturn(10.00);
+	
+	//Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("TEA", 1, 10.00, 10.00)).thenReturn(0.00);
+	
+	Mockito.doThrow(ContainerOverflowException.class).when(vendingMachine).placeBeverageOrderAndReturnChange("TEA", 1, 10.00, 10.00);
 	Mockito.when(scan.nextDouble()).thenReturn(5.00).thenReturn(5.00);
 	
 	app.start();
@@ -57,7 +79,7 @@ public void testStartSwitchCase2() throws ContainerOverflowException, MaterialOu
 	
 	Mockito.when(vendingMachine.placeBeverageOrderAndReturnChange("BLACKTEA", 1, new Double(10.00), new Double(50.00))).thenReturn(new Double(40.00));
 	
-	 app.start();
+	 app.start(); 
 }
 
 @Test
@@ -70,7 +92,8 @@ public void testStartSwitchCase3() throws ContainerOverflowException, MaterialOu
 	
 	Mockito.when(scan.nextDouble()).thenReturn(20.00);
 
-	 app.start();
+	 app.start(); 
+	 
 }
 
 
@@ -92,8 +115,7 @@ public void testStartSwitchCase4() throws MaterialOutOfStockException, Container
 }
 
 
-@Mock
-InputScanner scan;
+
 
 @Test
 public void testStartSwitchCase5() throws ContainerOverflowException {
@@ -152,10 +174,15 @@ public void testStartSwitchCase9() throws ContainerOverflowException {
 @Test
 public void testStartSwitchCase10() throws ContainerOverflowException{
 	
-	Mockito.when(scan.getString()).thenReturn("10").thenReturn("1").thenReturn("TEA").thenReturn("11");
-	
-	Mockito.when(scan.nextInt()).thenReturn(10); 
-	Mockito.when(vendingMachine.refillContainer("TEA", 1)).thenReturn(90);
+	Mockito.when(scan.getString()).thenReturn("10").thenReturn("11");
+
+	app.start();
+}
+
+@Test
+public void exceptionStartSwitchCase10() throws ContainerOverflowException{
+	Mockito.doThrow(RuntimeException.class).when(report).getContainerRefillReport();
+	Mockito.when(scan.getString()).thenReturn("10").thenReturn("11");
 	app.start();
 }
 

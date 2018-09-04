@@ -1,5 +1,7 @@
 package com.yash;
 
+import java.util.Scanner;
+
 import com.yash.controllers.IReport;
 import com.yash.controllers.IVendingMachine;
 import com.yash.controllers.ReportImpl;
@@ -13,19 +15,16 @@ public class App {
 	IVendingMachine vendingMachine;
 	IReport report;
 
-	public App() {
+	public App() throws ContainerOverflowException {
 
-		try {
+	
 			new BootstrapApp().CreateAllData();
 
-			scan = new InputScanner();
-			this.report = new ReportImpl();
+			scan = new InputScanner(new Scanner(System.in));
+			report = new ReportImpl();
 
 			vendingMachine = new VendingMachineImpl();
-		} catch (ContainerOverflowException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 
 /*	public App(InputScanner scan, IVendingMachine vendingMachine, IReport report) {
@@ -132,7 +131,7 @@ public class App {
 
 			Double enteredAmount = new Double(0.00);
 
-			while (enteredAmount < price) {
+			while (enteredAmount < price) { 
 
 				System.out.println("Please Enter the Amount Rs: " + (price - enteredAmount));
 
@@ -149,7 +148,7 @@ public class App {
 			System.out.println("Thank You ..!");
 		} catch (MaterialOutOfStockException | ContainerOverflowException e) {
 
-			System.out.println(e.getMessage());
+			System.out.println(e.getMessage()); 
 
 		}
 	}

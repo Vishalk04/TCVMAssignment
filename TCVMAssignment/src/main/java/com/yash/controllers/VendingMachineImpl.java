@@ -32,7 +32,7 @@ public class VendingMachineImpl implements IVendingMachine {
 		priceServices = new PriceServicesImpl();
 		containerServices = new ContainerServicesImpl();
 		orderServices = new OrderServicesImpl();
-	
+	 
 	}
 
 	@Override

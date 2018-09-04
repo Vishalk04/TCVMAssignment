@@ -3,11 +3,12 @@ package com.yash.model;
 import java.util.Scanner;
 
 public class InputScanner {
+	
 	private final Scanner scanner;
 
-	public InputScanner() {
+/*	public InputScanner() {
 		this.scanner = new Scanner(System.in);
-	}
+	}*/
 	
 	public InputScanner(Scanner scanner) {
 		super();

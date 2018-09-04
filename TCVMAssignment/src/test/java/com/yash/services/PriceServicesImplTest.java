@@ -59,7 +59,7 @@ public class PriceServicesImplTest {
 		
 		Mockito.when(beverageDao.getBeverage(BeverageTypes.TEA)).thenReturn(tea);
 		
-		priceServices.calculateTotalPrice(BeverageTypes.COFFEE, 1);
+		priceServices.calculateTotalPrice(BeverageTypes.TEA, 1);
 		
 	//	Mockito.verify(beverageDao).getBeverage(BeverageTypes.TEA);
 	

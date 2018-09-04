@@ -4,27 +4,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.yash.exceptions.ContainerOverflowException;
-import com.yash.model.Container;
 import com.yash.model.MaterialTypes;
 
 public class ContainerDao {
 	
 	private static Map<MaterialTypes, Integer> containerRefillTransactions = new HashMap<MaterialTypes, Integer>();
 	
+	private static Map<MaterialTypes, Integer> container = new HashMap<MaterialTypes, Integer>();
+	
 	public  void initialize() {
 
-		try { 
-			Container.put(MaterialTypes.TEA, 100);
-			Container.put(MaterialTypes.MILK, 100);
-			Container.put(MaterialTypes.SUGER, 100);
-			Container.put(MaterialTypes.COFFEE, 100);
-			Container.put(MaterialTypes.WATER, 100);
-			
-			
-		} catch (ContainerOverflowException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+			container.put(MaterialTypes.TEA, 100);
+			container.put(MaterialTypes.MILK, 100);
+			container.put(MaterialTypes.SUGER, 100);
+			container.put(MaterialTypes.COFFEE, 100);
+			container.put(MaterialTypes.WATER, 100);
+	
  
 	} 
 	
@@ -33,7 +29,7 @@ public class ContainerDao {
 		Map<MaterialTypes, Integer> allContainerRefillTransactions = new HashMap<MaterialTypes, Integer>(containerRefillTransactions);
 		if(allContainerRefillTransactions != null && !(allContainerRefillTransactions.isEmpty()))
 			return allContainerRefillTransactions;
-		throw new RuntimeException("Data Not Available");
+		throw new RuntimeException("Data Not Available"); 
 	}
 	
 	public boolean addRefillTransaction(MaterialTypes materials, Integer quantity){
@@ -47,18 +43,18 @@ public class ContainerDao {
 	}
 	
 	public  Integer put(MaterialTypes materialName, int quantity) throws ContainerOverflowException {
-		return Container.put(materialName, quantity);
+		return container.put(materialName, quantity);
 		
 	}
 	
 	public Integer get(MaterialTypes materialName) {
-		return Container.get(materialName);
+		return container.get(materialName);
 	}
 	
 	
 	
 	public Integer getSize(MaterialTypes materialName){
-		return Container.getSize(materialName);
+		return  container.get(materialName);
 	}
 	
 

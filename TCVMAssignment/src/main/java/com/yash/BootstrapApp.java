@@ -18,18 +18,18 @@ public class BootstrapApp {
 
 	}
 
-	public void CreateAllData() throws ContainerOverflowException {
+	public void CreateAllData()  {
 
 		System.out.println("Starting vending Machine.... ");
 
 		containerDao.initialize();
 
 		System.out.println("All Container are filled .!");
-try{
+		try{
 		beverageDao.initialize();
-}catch(ContainerOverflowException e){
+		}catch(ContainerOverflowException e){
 	e.printStackTrace();
-}
+		}
 		System.out.println("Beverages are prepared...! and Good to Go");
 
 	}
